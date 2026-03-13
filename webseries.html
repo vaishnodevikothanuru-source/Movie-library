@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Web Series - My Movie Library</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+body{
+background:#111;
+color:white;
+animation:fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+header{
+animation:headerGlow 2s infinite alternate;
+}
+
+@keyframes headerGlow{
+from{
+box-shadow:0 0 10px #e50914;
+}
+to{
+box-shadow:0 0 25px #ff2d2d;
+}
+}
+
+.card{
+background:#1c1c1c;
+color:white;
+transition:transform 0.4s, box-shadow 0.4s;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.8);
+}
+
+.card img{
+transition:transform 0.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.series-card{
+animation:slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.btn-fav{
+background:#e50914;
+color:white;
+border:none;
+transition:0.3s;
+}
+
+
+.btn-fav:hover{
+background:#c40812;
+transform:scale(1.1);
+}
+
+.btn-fav:active{
+transform:scale(0.9);
+}
+
+.nav-link{
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#ff4d4d;
+transform:scale(1.1);
+}
+</style>
+
+</head>
+
+<body>
+
+
+<header class="bg-danger text-center p-4 fs-3 fw-bold">
+📺 My Web Series Collection
+</header>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+
+<a class="navbar-brand" href="#">Library</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="home.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="movie index.html">Movies</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="webseries.html">Web Series</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="anime.html">Anime</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="cartoon.html">Cartoons</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="genre.html">Genres</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<div class="container mt-4">
+
+<input
+type="text"
+id="searchInput"
+class="form-control"
+placeholder="Search here..."
+onkeyup="searchContent()"
+>
+
+</div>
+
+
+<div class="container mt-4">
+
+<h2 class="mb-4">Popular Web Series</h2>
+
+<div class="row g-4">
+
+
+<div class="col-md-3 series-card" onclick="showDetails('Stranger Things')">
+
+<div class="card h-100">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Stranger_Things_season_1.jpg/250px-Stranger_Things_season_1.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Stranger Things</h3>
+
+<p>Drama | Sci-Fi | 2016</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Stranger Things')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 series-card" onclick="showDetails('Money Heist')">
+
+<div class="card h-100">
+
+<img src="https://static.wixstatic.com/media/cc3c19_cbd914f0c500445884dedd0a88d14386~mv2.png/v1/fill/w_577,h_775,al_c,lg_1,q_90/cc3c19_cbd914f0c500445884dedd0a88d14386~mv2.png" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Money Heist</h3>
+
+<p>Crime | Thriller | 2017</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Money Heist')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 series-card" onclick="showDetails('The Witcher')">
+
+<div class="card h-100">
+
+<img src="https://m.media-amazon.com/images/M/MV5BOTQzMzNmMzUtODgwNS00YTdhLTg5N2MtOWU1YTc4YWY3NjRlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">The Witcher</h3>
+
+<p>Fantasy | Action | 2019</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('The Witcher')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3 series-card" onclick="showDetails('Wednesday')">
+
+<div class="card h-100">
+
+<img src="https://m.media-amazon.com/images/I/81Y1OJVIoJL._AC_UF1000,1000_QL80_.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Wednesday</h3>
+
+<p>Mystery | Comedy | 2022</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Wednesday')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 series-card" onclick="showDetails('Loki')">
+
+<div class="card h-100">
+
+<img src="https://images.thedirect.com/media/article_full/loki-season-2-mcu.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Loki</h3>
+
+<p>Superhero | Fantasy | 2021</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Loki')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 series-card" onclick="showDetails('The Boys')">
+
+<div class="card h-100">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw7ugEST1VXaP765HreBq5xi_C4TshzzqZvw&s" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">The Boys</h3>
+
+<p>Action | Drama | 2019</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('The Boys')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<footer class="text-center bg-dark p-3 mt-5">
+© 2026 My Movie Library | Web Series Page
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

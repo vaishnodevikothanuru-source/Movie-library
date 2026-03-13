@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cartoons - My Movie Library</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+body{
+background:#111;
+color:white;
+animation:fadeIn 1s ease-in;
+}
+
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+header{
+animation:headerGlow 2s infinite alternate;
+}
+
+@keyframes headerGlow{
+from{
+box-shadow:0 0 10px #e50914;
+}
+to{
+box-shadow:0 0 25px #ff2d2d;
+}
+}
+
+.card{
+background:#1c1c1c;
+color:white;
+transition:transform 0.4s, box-shadow 0.4s;
+overflow:hidden;
+}
+
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.8);
+}
+
+.card img{
+transition:transform 0.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+
+.cartoon-card{
+animation:slideUp 0.8s ease forwards;
+}
+
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.btn-fav{
+background:#e50914;
+color:white;
+border:none;
+transition:0.3s;
+}
+
+.btn-fav:hover{
+background:#c40812;
+transform:scale(1.1);
+}
+
+.btn-fav:active{
+transform:scale(0.9);
+}
+
+
+.nav-link{
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#ff4d4d;
+transform:scale(1.1);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-danger text-center p-4 fs-3 fw-bold">
+🧸 My Cartoon Collection
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+
+<a class="navbar-brand" href="#">Library</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="home.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="movie index.html">Movies</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="webseries.html">Web Series</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="anime.html">Anime</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="cartoon.html">Cartoons</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="genre.html">Genres</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<div class="container mt-4">
+
+<input
+type="text"
+id="searchInput"
+class="form-control"
+placeholder="Search here..."
+onkeyup="searchContent()"
+>
+
+</div>
+
+
+<div class="container mt-4">
+
+<h2 class="mb-4">Popular Cartoons</h2>
+
+<div class="row g-4">
+
+
+<div class="col-md-3 cartoon-card" onclick="showDetails('Tom and Jerry')">
+
+<div class="card h-100">
+
+<img src="https://i.pinimg.com/736x/28/de/6e/28de6ef08da9fcac8fa0b2ef54169a07.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Tom and Jerry</h3>
+
+<p>Comedy | Family | 1940</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Tom and Jerry')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 cartoon-card" onclick="showDetails('SpongeBob SquarePants')">
+
+<div class="card h-100">
+
+<img src="https://play-lh.googleusercontent.com/ISgxKOwnJrOw4BQ01qzYJQgD1zjMg9IY80QEY-3NFAJEXYfDqynZfdlP62WVT_6F80RNafXwU1TEUHYZiq7K" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">SpongeBob SquarePants</h3>
+
+<p>Comedy | Adventure | 1999</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('SpongeBob SquarePants')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3 cartoon-card" onclick="showDetails('Oggy and Cockroaches')">
+
+<div class="card h-100">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJjjuyvG4ga1xzD8gxvjit63P1DRi4Ya7txw&s" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Oggy and Cockroaches</h3>
+
+<p>Adventure | Comedy | 1998</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Oggy and Cockroaches')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 cartoon-card" onclick="showDetails('Doraemon')">
+
+<div class="card h-100">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs9riDtmFM5OniDDKS3vKd6pSHDYH2h7v6zA&s" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Doraemon</h3>
+
+<p>Comedy | Fantasy | 1979</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Doraemon')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-3 cartoon-card" onclick="showDetails('Shin Chan')">
+
+<div class="card h-100">
+
+<img src="https://rukmini1.flixcart.com/image/1500/1500/km3s1ow0/poster/a/c/e/medium-shin-chan-cartoon-wall-poster-for-room-with-gloss-original-imagf2uzrnezrzp3.jpeg?q=70" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Shin Chan</h3>
+
+<p>Comedy | Family | 2003</p>
+
+<button
+class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Shin Chan')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<footer class="text-center bg-dark p-3 mt-5">
+© 2026 My Movie Library | Cartoon Page
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
