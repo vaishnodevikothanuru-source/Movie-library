@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Movies - My Movie Library</title>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+background:#111;
+color:white;
+animation:fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+header{
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{
+box-shadow:0 0 10px #e50914;
+}
+to{
+box-shadow:0 0 25px #ff2d2d;
+}
+}
+
+
+.card{
+background:#1c1c1c;
+color:white;
+transition:transform 0.4s, box-shadow 0.4s;
+overflow:hidden;
+}
+
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.8);
+}
+
+.card img{
+transition:transform 0.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.movie-card{
+animation:slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.btn-fav{
+background:#e50914;
+border:none;
+color:white;
+transition:0.3s;
+}
+
+.btn-fav:hover{
+background:#c40812;
+transform:scale(1.1);
+}
+
+.btn-fav:active{
+transform:scale(0.9);
+}
+
+.nav-link{
+transition:0.3s;
+}
+
+.nav-link:hover{
+color:#ff4d4d;
+transform:scale(1.1);
+}
+
+footer{
+background:#222;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="bg-danger text-center p-4 fs-3 fw-bold">
+🎬 My Movie Library
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+
+<a class="navbar-brand" href="#">Library</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="home.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="movie index.html">Movies</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="webseries.html">Web series</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="anime.html">Anime</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="cartoon.html">Cartoons</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="genre.html">Genres</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+<!-- SEARCH -->
+<div class="container mt-4">
+
+<input
+type="text"
+id="searchInput"
+class="form-control"
+placeholder="Search here..."
+onkeyup="searchContent()"
+>
+
+</div>
+
+<!-- MOVIES -->
+<div class="container mt-4">
+
+<h2 class="mb-4">Popular Movies</h2>
+
+<div class="row g-4">
+
+<!-- MOVIE -->
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Avengers')">
+
+<div class="card h-100">
+
+<img src="https://www.cnet.com/a/img/resize/943a19715131bfd173e14db3f4d76d5c681761eb/hub/2019/03/14/dd4d8d9c-5f16-4f6b-a7d8-65a00d095c2c/avengers-endgame-poster-square-crop.jpg?auto=webp&fit=crop&height=900&width=1200" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Avengers</h3>
+<p>Action | Adventure | 2012</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Avengers')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- MOVIE -->
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Inception')">
+
+<div class="card h-100">
+
+<img src="https://i.ytimg.com/vi/RNjdepthRrg/sddefault.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Inception</h3>
+<p>Sci-Fi | Thriller | 2010</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Inception')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- MOVIE -->
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Interstellar')">
+
+<div class="card h-100">
+
+<img src="https://media.licdn.com/dms/image/v2/D5612AQHfW99PWehC-A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1728994931818?e=2147483647&v=beta&t=uaAZxNtRozLwMeCAYt8t1oPkwjfHLcccxiPrGcQE07I" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Interstellar</h3>
+<p>Drama | Sci-Fi | 2014</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Interstellar')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Joker')">
+
+<div class="card h-100">
+
+<img src="https://i.ytimg.com/vi/VT7G6DlTKEU/hq720.jpg" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Joker</h3>
+<p>Crime | Drama | 2019</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Joker')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- MOVIE -->
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Titanic')">
+
+<div class="card h-100">
+
+<img src="https://i0.wp.com/awardswatch.com/wp-content/uploads/2023/02/Screenshot-2023-02-13-at-8.01.58-AM.png?fit=1200%2C676&ssl=1" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Titanic</h3>
+<p>Romance | Drama | 1997</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Titanic')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- MOVIE -->
+<div class="col-md-4 col-lg-3 movie-card" onclick="showDetails('Spider-Man')">
+
+<div class="card h-100">
+
+<img src="https://rukmini1.flixcart.com/image/1500/1500/xif0q/poster/w/2/a/large-movie-the-amazing-spider-man-2-spider-man-print-poster-on-original-imah3kavvecdqkt7.jpeg?q=70" class="card-img-top">
+
+<div class="card-body">
+
+<h3 class="card-title">Spider-Man</h3>
+<p>Action | Fantasy | 2021</p>
+
+<button class="btn btn-fav"
+onclick="event.stopPropagation(); addFavorite('Spider-Man')">
+⭐ Favorite
+</button>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center text-light p-3 mt-5">
+© 2026 My Movie Library | All Rights Reserved
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
